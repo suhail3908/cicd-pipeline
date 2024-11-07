@@ -27,7 +27,7 @@ pipeline {
         stage("Deploy"){
             steps {
                 echo "Deploying the conatiner"
-                sh "docker run -d -p 3908:3908 suhail300/my-note-app:latest"
+                sh "docker run -d -p 8000:8000 suhail300/my-note-app:latest"
             }
         }
           stage('Deploy to Kubernets'){
