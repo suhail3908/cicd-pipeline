@@ -5,7 +5,7 @@ pipeline {
         stage ("Code") {
             steps {
                 echo " Cloning the Code"
-                git url:"https://github.com/adhya2020/django-notes-app.git" , branch: "main"
+                git url:"https://github.com/suhail3908/django-notes-app.git" , branch: "main"
             }
         }
         stage ("Build"){
@@ -27,7 +27,7 @@ pipeline {
         stage("Deploy"){
             steps {
                 echo "Deploying the conatiner"
-                sh "docker run -d -p 8000:8000 sumeetkulkarni/my-note-app:latest"
+                sh "docker run -d -p 9000:9000 sumeetkulkarni/my-note-app:latest"
             }
         }
           stage('Deploy to Kubernets'){
