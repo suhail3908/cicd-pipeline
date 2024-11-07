@@ -20,14 +20,14 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]) {
                 sh "docker tag my-note-app ${env.dockerHubUser}/my-note-app:latest"
                 sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                sh "docker push ${env.dockerHubUser}/my-note-app"
+                sh "docker push ${env.dockerHubUser}/my-note-app:latest"
                 }
             }
         }
         stage("Deploy"){
             steps {
                 echo "Deploying the conatiner"
-                sh "docker run -d -p 3908:3908 suhail300/my-note-app"
+                sh "docker run -d -p 3908:3908 suhail300/my-note-app:latest"
             }
         }
           stage('Deploy to Kubernets'){
